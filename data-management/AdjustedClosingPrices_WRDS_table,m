@@ -1,0 +1,38 @@
+function [data] = AdjustedClosingPrices_WRDS_table(data)
+% AdjustedClosingPrices_WRDS_table this function provides a way to
+% apply the MATLAB built-in adjustedClosingPrices to a timetable
+% with multiple stocks downloaded by WRDS (Compustat/CRSP) data.
+% According to WRDS we use/need the following columns:
+% tic = ticker of the stocks
+% prccm = non-adjusted closing prices
+% rawxm = split factors
+% dvpsxm = dividend factors
+% The output is the original Table with the additional columns of Ajd.
+% Closing Prices
+arguments (Input)
+    data timetable
+end
+
+arguments (Output)
+    data timetable
+end
+
+%% ======= ADJUSTING CLOSING PRICES: HISTORICAL DATASET ========
+% fixing the dataset
+data.dvpsxm(isnan(data.dvpsxm))=0;
+data.rawxm(isnan(data.rawxm))=1;
+% re-arranging variables
+tickers = unique(data.tic);
+[r,c] = size(data);
+data.AdjP = NaN(r,1);
+for k = 1:length(tickers)
+    subset = data(data.tic == tickers(k),:);
+    subset = sortrows(subset,"datadate");
+    subset = movevars(subset,"prccm","Before","tic");
+    subset = movevars(subset,"rawxm","after","prccm");
+    subset = movevars(subset,"dvpsxm","After","rawxm");
+    Adj_Closing_Prices = adjustedClosingPrices(subset,"ClosingPriceVariable","prccm","DividendVariable", ...
+                                                "dvpsxm","SplitVariable","rawxm");
+    data(data.tic == tickers(k),"AdjP") = Adj_Closing_Prices;
+end
+end
