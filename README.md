@@ -1,3 +1,5 @@
+These are the functions I created to assist me during my work.
+
 # Data-Management 🧮
 
 ### FittingData (MATLAB)
