@@ -12,7 +12,7 @@ StationarityTests is a function that applies a collection of statistical tests t
 An example of a timetable to which you can apply this function is the output of the "FittingData" function.
 
 ### BadData (MATLAB)
-BadData is a function that checks for the number of NaN, Inf and zero values in a timetable with a structure as the output of the function "FittingData" (see also the built-in function "unstack"). It stops if there are NaN or Inf values.
+BadData is a function that checks for NaN, Inf and zero values in a timetable with a structure as the output of the function "FittingData" (see also the built-in function "unstack"). It returns logical arrays marking where these values are and issues a warning for each type found.
 
 # Work in progress 🚧
 
