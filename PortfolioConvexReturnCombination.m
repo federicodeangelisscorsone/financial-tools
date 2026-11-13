@@ -1,6 +1,6 @@
-function [X] = PortfolioValueMomentumMix(timetable_momentum,timetable_value,phi,min_inv)
-% PortfolioValueMomentumMix is a function that computes the efficient frontier of a portfolio optimization problem in which:
-% - the return is a weighted average of a momentum and value approach*
+function [X] = PortfolioConvexReturnCombination(timetable_momentum,timetable_value,phi,min_inv)
+% PortfolioConvexReturnCombination is a function that computes the optimal weights of a portfolio optimization problem in which:
+% - the return is a convex combination of two different definition of returns*
 % - the risk is defined as returns variance;
 % INPUTS: 
 % (i) "timetable_momentum" is a timetable expressing market returns;
@@ -72,12 +72,13 @@ pi_max_feasible = -ret_max;
 pi_vec_M = linspace(pi_min_feasible,pi_max_feasible,P); % creating the array of returns
 
 % ---- 9)  Frontier for each level of risk return ----
+X = NaN(n,P); %pre-allocation
 for j = 1:P
     beq = pi_vec_M(j); %for each level of return...
     [X(:,j),fval,exitflag(j)] = quadprog(H,f,AA,C1,M,beq,lb,ub,[],opts_quad); %...minimize the variance
 end
 
-fprintf('=== Optimization: Mixing Value and Momentum === \n');
+fprintf('=== Optimization: Convex Return Definition === \n');
 fprintf('Optimization: %d/%d solutions\n', sum(exitflag==1), P);
 
 

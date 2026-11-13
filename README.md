@@ -33,8 +33,8 @@ Besides the cleaned timetable, it returns and prints the percentage of values fl
 
 # Portfolio optimization 📈
 
-### PortfolioValueMomentumMix (MATLAB)
-PortfolioValueMomentumMix is a function that computes the efficient frontier (20 points) of a mean-variance problem in which the expected return is a convex combination, with weight "phi", of a momentum signal (the mean of past returns) and a value signal (the latest value of a fundamental ratio, e.g. CAEY or B/M).\
+### PortfolioConvexReturnCombination (MATLAB)
+PortfolioConvexReturnCombination (formerly PortfolioValueMomentumMix) is a function that computes the efficient frontier (20 points) of a mean-variance problem in which the expected return is a convex combination, with weight "phi", of two different definitions of return: e.g. a momentum signal (the mean of past returns) and a value signal (the latest value of a fundamental ratio, such as CAEY or B/M).\
 Risk is the variance of returns.\
 The portfolio is long-only, invests between 99% and 100% of the wealth, and can impose a minimum investment in each asset ("phi" and the minimum investment must both be between 0 and 1).\
 It uses the built-in solvers "quadprog" and "linprog" and returns the weights of each frontier portfolio.\
