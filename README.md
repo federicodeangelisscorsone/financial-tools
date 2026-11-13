@@ -1,4 +1,9 @@
-These are the functions I created to assist me during my work.
+# What is `financial-tools`?
+`financial-tools` is a collection of functions I created (and use) for my own projects. Certain problems regarding datasets and analysis can be generalized, meaning that once they are solved, the solutions can be reused. My workflow for this collection is as follows:
+(i) I write the functions by hand;
+(ii) I check the syntax and logic using AI;
+(iii) I push the commits. Sometimes, I let Claude Code push the commits and fix the README or other small details. This is why it may appear among the co-authors.
+Regarding point (ii), I avoid having the AI generate the functions from scratch. AI tends to produce over-engineered code, so I prefer to write it myself and then use AI to run a logic check.
 
 # Data-Management 🧮
 
