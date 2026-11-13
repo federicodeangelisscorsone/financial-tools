@@ -19,8 +19,8 @@ function [X] = PortfolioValueMomentumMix(timetable_momentum,timetable_value,phi,
 arguments (Input)
     timetable_momentum timetable
     timetable_value timetable
-    phi (1,1) double
-    min_inv (1,1) double
+    phi (1,1) double {mustBeBetween(phi,0,1)}
+    min_inv (1,1) double {mustBeBetween(min_inv,0,1)}
 end
 
 arguments (Output)
@@ -77,8 +77,8 @@ for j = 1:P
     [X(:,j),fval,exitflag(j)] = quadprog(H,f,AA,C1,M,beq,lb,ub,[],opts_quad); %...minimize the variance
 end
 
-fprintf(' === Optimization: Mixing Value and Momentum === \n');
-fprintf(' Optimization: %d/%d solutions\n', nnz(exitflag==1), P);
+fprintf('=== Optimization: Mixing Value and Momentum === \n');
+fprintf('Optimization: %d/%d solutions\n', sum(exitflag==1), P);
 
 
 end
