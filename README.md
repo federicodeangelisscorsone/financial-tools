@@ -5,6 +5,9 @@ These are the functions I created to assist me during my work.
 ### FittingData (MATLAB)
 FittingData is a function that extracts from a stacked timetable a sub-timetable in which the content is given by "variable_fitted" and the columns are taken from "variable_of_interest". Similar to the built-in function unstack.
 
+### CheckColumns (MATLAB)
+CheckColumns is a function that checks that two timetables have the same variables (case-insensitive), e.g. the same industries in a returns timetable and in a fundamentals timetable. It returns both timetables with UPPERCASE variable names and the columns sorted in the same (alphabetical) order, and it stops with an error if the two sets of variables differ.
+
 # Analysis ⌨️
 
 ### StationarityTests (MATLAB)
