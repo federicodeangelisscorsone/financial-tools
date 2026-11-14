@@ -16,6 +16,10 @@ FittingData is a function that extracts from a stacked timetable a sub-timetable
 CheckColumns is a function that checks that two timetables have the same variables (case-insensitive), e.g. the same industries in a returns timetable and in a fundamentals timetable.\
 It returns both timetables with UPPERCASE variable names and the columns sorted in the same (alphabetical) order, and it stops with an error if the two sets of variables differ.
 
+### RollingWindow (MATLAB)
+RollingWindow is a function that, given a starting date "t1" and a number of months "m", returns the end date t2 = t1 + m months and the closed timerange [t1, t2].\
+It is meant to select a window of data from a timetable, e.g. for estimation or backtesting.
+
 # Analysis ⌨️
 
 ### StationarityTests (MATLAB)
@@ -37,6 +41,7 @@ Besides the cleaned timetable, it returns and prints the percentage of values fl
 PortfolioConvexReturnCombination is a function that computes the efficient frontier (20 points) of a mean-variance problem in which the expected return is a convex combination, with weight "phi", of two different definitions of return: e.g. a momentum signal (the mean of past returns) and a value signal (the latest value of a fundamental ratio, such as CAEY or B/M).\
 Risk is the variance of returns.\
 The portfolio is long-only, invests between 99% and 100% of the wealth, and can impose a minimum investment in each asset ("phi" and the minimum investment must both be between 0 and 1).\
+The second return definition must be in the same units as the returns of the first timetable (e.g. expected return per period).\
 It uses the built-in solvers "quadprog" and "linprog" and returns the weights of each frontier portfolio.\
 See the paper "Mixing Momentum and Value Strategies in Portfolio Optimization" (De Angelis Scorsone F., in preparation).
 

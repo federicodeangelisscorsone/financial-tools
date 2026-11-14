@@ -1,11 +1,24 @@
-function [X] = PortfolioConvexReturnCombination(timetable_momentum,timetable_value,phi,min_inv)
-% PortfolioConvexReturnCombination is a function that computes the optimal weights of a portfolio optimization problem in which:
-% - the return is a convex combination of two different definition of returns*
-% - the risk is defined as returns variance;
+function [X] = PortfolioConvexReturnCombination(timetable1,timetable2,phi,min_inv)
+% PortfolioConvexReturnCombination is a function that computes a long-only mean-variance
+% efficient frontier in which the expected-return vector is a convex
+% combination of two return definitions:
+%
+%     M = phi * mean(timetable1) + (1 - phi) * timetable2(end,:)
+% and risk is the portfolio variance x'*Sigma*x, with Sigma the sample
+% covariance of timetable1.
+%
+% For P = 20 target values of M*x, equally spaced between the
+% minimum-variance portfolio and the maximum-M portfolio, it solves
+%     min x'*Sigma*x   s.t.  M*x = target,  0.99 <= sum(x) <= 1,
+%                            min_inv <= x_i <= 1.
 % INPUTS: 
-% (i) "timetable_momentum" is a timetable expressing market returns;
-% (ii) "timetable_value" is a timetable expressing a fundamental ratio, such as
-% CAPE or B/M;
+% (i)   timetable1 - T-by-n timetable of periodic asset returns (decimals).
+%       Used for both the first return definition (sample mean) and the
+%       covariance matrix.
+% (ii)  timetable2 - timetable with the second return definition for the
+%       same n assets, same column order. Only the last row is used.
+%       Must be in the same units as the returns in timetable1 (e.g.
+%       expected return per period);
 % (iii) "phi" is the coefficient of the convex combination between value
 % and momentum;
 % (iv) "min_inv" is the minimum investment in each element;
@@ -17,8 +30,8 @@ function [X] = PortfolioConvexReturnCombination(timetable_momentum,timetable_val
 % Optimization" De Angelis Scorsone F. 
  
 arguments (Input)
-    timetable_momentum timetable
-    timetable_value timetable
+    timetable1 timetable
+    timetable2 timetable
     phi (1,1) double {mustBeBetween(phi,0,1)}
     min_inv (1,1) double {mustBeBetween(min_inv,0,1)}
 end
@@ -28,11 +41,11 @@ arguments (Output)
 end
 
 % --- 0) some introductory variables ---
-n = width(timetable_momentum); %number of assets
+n = width(timetable1); %number of assets
 P = 20; % number of frontier points
 
 % ---- 1) Risk matrix H  ----
-rr = timetable_momentum.Variables;
+rr = timetable1.Variables;
 Sigma_rr = cov(rr);
 H = 2.*Sigma_rr;
 
@@ -40,7 +53,7 @@ H = 2.*Sigma_rr;
 mu_rr = mean(rr);
 
 % ---- 4) Objective return vector M ----
-mu_obj = timetable_value.Variables; % extract the variables
+mu_obj = timetable2.Variables; % extract the variables
 mu_obj = mu_obj(end,:);
 
 % ---- 5) Objective return vector M ----
