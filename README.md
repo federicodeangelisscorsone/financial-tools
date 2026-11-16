@@ -38,7 +38,7 @@ Besides the cleaned timetable, it returns and prints the percentage of values fl
 # Portfolio optimization 📈
 
 ### PortfolioConvexReturnCombination (MATLAB)
-PortfolioConvexReturnCombination is a function that computes the efficient frontier (20 points) of a mean-variance problem in which the expected return is a convex combination, with weight "phi", of two different definitions of return: e.g. a momentum signal (the mean of past returns) and a value signal (the latest value of a fundamental ratio, such as CAEY or B/M).\
+PortfolioConvexReturnCombination is a function that computes the efficient frontier (20 points) of a mean-variance problem in which the expected return is a convex combination, with weight "phi", of two different definitions of return: e.g. a momentum signal (the mean of past returns) and a value signal (the mean of a fundamental ratio, such as CAEY or B/M).\
 Risk is the variance of returns.\
 The portfolio is long-only, invests between 99% and 100% of the wealth, and can impose a minimum investment in each asset ("phi" and the minimum investment must both be between 0 and 1).\
 The second return definition must be in the same units as the returns of the first timetable (e.g. expected return per period).\

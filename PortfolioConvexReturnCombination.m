@@ -3,7 +3,7 @@ function [X] = PortfolioConvexReturnCombination(timetable1,timetable2,phi,min_in
 % efficient frontier in which the expected-return vector is a convex
 % combination of two return definitions:
 %
-%     M = phi * mean(timetable1) + (1 - phi) * timetable2(end,:)
+%     M = phi * mean(timetable1) + (1 - phi) * mean(timetable2)
 % and risk is the portfolio variance x'*Sigma*x, with Sigma the sample
 % covariance of timetable1.
 %
@@ -16,7 +16,7 @@ function [X] = PortfolioConvexReturnCombination(timetable1,timetable2,phi,min_in
 %       Used for both the first return definition (sample mean) and the
 %       covariance matrix.
 % (ii)  timetable2 - timetable with the second return definition for the
-%       same n assets, same column order. Only the last row is used.
+%       same n assets, same column order. Its sample mean is used.
 %       Must be in the same units as the returns in timetable1 (e.g.
 %       expected return per period);
 % (iii) "phi" is the coefficient of the convex combination between value
@@ -54,7 +54,7 @@ mu_rr = mean(rr);
 
 % ---- 4) Objective return vector M ----
 mu_obj = timetable2.Variables; % extract the variables
-mu_obj = mu_obj(end,:);
+mu_obj = mean(mu_obj);
 
 % ---- 5) Objective return vector M ----
 M = phi.*mu_rr+(1-phi).*mu_obj;
