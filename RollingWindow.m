@@ -2,7 +2,7 @@ function [rw,t2] = RollingWindow(t1,m)
 % "RollingWindow" is a function that computes:
 % - the timerange
 % - the datetime
-% of an initial datetime "t1" and added by "m" months
+% of an initial datetime "t" and added by "m" months
 
 arguments (Input)
     t1 datetime
