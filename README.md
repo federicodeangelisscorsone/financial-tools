@@ -47,4 +47,4 @@ See the paper "Mixing Momentum and Value Strategies in Portfolio Optimization" (
 
 # Work in progress 🚧
 
-The following functions are work in progress: Backtesting, PortfolioConcentration and PortfolioRiskReturnMetrics.
+The following functions are work in progress: Backtesting, HoldingWindow, PortfolioConcentration and PortfolioRiskReturnMetrics.
