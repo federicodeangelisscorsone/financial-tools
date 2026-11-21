@@ -20,6 +20,11 @@ It returns both timetables with UPPERCASE variable names and the columns sorted 
 RollingWindow is a function that, given a starting date "t1" and a number of months "m", returns the end date t2 = t1 + m months and the closed timerange [t1, t2].\
 It is meant to select a window of data from a timetable, e.g. for estimation or backtesting.
 
+### HoldingWindows (MATLAB)
+HoldingWindows is a function that, given a vector of rebalancing dates t, returns a cell array of timeranges, one for each holding period (t(k), t(k+1)].\
+The left end is open because the portfolio is rebalanced at the close of t(k), so each day belongs to one period only.\
+It can be used with the end dates from "RollingWindow" to extract the out-of-sample returns of each period from a timetable: TT(CellRW{k},:).
+
 # Analysis ⌨️
 
 ### StationarityTests (MATLAB)
@@ -47,4 +52,4 @@ See the paper "Mixing Momentum and Value Strategies in Portfolio Optimization" (
 
 # Work in progress 🚧
 
-The following functions are work in progress: Backtesting, HoldingWindow, PortfolioConcentration and PortfolioRiskReturnMetrics.
+The following functions are work in progress: Backtesting, PortfolioConcentration and PortfolioRiskReturnMetrics.
