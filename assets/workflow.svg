@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="314" viewBox="0 0 420 314" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#1f2328">
+<rect x="30" y="10" width="360" height="48" rx="6" fill="#ffffff" stroke="#57606a" stroke-width="1.5"/>
+<text x="210.0" y="34.0" text-anchor="middle" dominant-baseline="central">Step 1: I write the function</text>
+<line x1="210.0" y1="58" x2="210.0" y2="84" stroke="#57606a" stroke-width="1.5"/>
+<path d="M204.0,83 L216.0,83 L210.0,91 Z" fill="#57606a"/>
+<rect x="30" y="92" width="360" height="48" rx="6" fill="#ffffff" stroke="#57606a" stroke-width="1.5"/>
+<text x="210.0" y="116.0" text-anchor="middle" dominant-baseline="central">Step 2: short review with AI</text>
+<line x1="210.0" y1="140" x2="210.0" y2="166" stroke="#57606a" stroke-width="1.5"/>
+<path d="M204.0,165 L216.0,165 L210.0,173 Z" fill="#57606a"/>
+<rect x="30" y="174" width="360" height="48" rx="6" fill="#ffffff" stroke="#57606a" stroke-width="1.5"/>
+<text x="210.0" y="198.0" text-anchor="middle" dominant-baseline="central">Step 3: I review the AI suggestions</text>
+<line x1="210.0" y1="222" x2="210.0" y2="248" stroke="#57606a" stroke-width="1.5"/>
+<path d="M204.0,247 L216.0,247 L210.0,255 Z" fill="#57606a"/>
+<rect x="30" y="256" width="360" height="48" rx="6" fill="#ffffff" stroke="#57606a" stroke-width="1.5"/>
+<text x="210.0" y="280.0" text-anchor="middle" dominant-baseline="central">Push / use in production</text>
+</svg>

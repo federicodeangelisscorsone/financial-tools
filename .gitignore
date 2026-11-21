@@ -3,3 +3,6 @@
 !/*.m
 !/.gitignore
 !/README.md
+!/assets/
+/assets/*
+!/assets/*.svg
