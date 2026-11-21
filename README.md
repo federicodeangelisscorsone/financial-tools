@@ -7,6 +7,15 @@
 
 Regarding point (ii), I avoid having the AI generate the functions from scratch. AI tends to produce over-engineered code, so I prefer to write it myself and then use AI to run a logic check.
 
+## How I work on these functions 🔁
+
+```mermaid
+flowchart LR
+    A["✍️ 1. I write<br/>the function"] --> B["🤖 2. Short review<br/>with AI"]
+    B --> C["🔍 3. I review the<br/>AI suggestions"]
+    C --> D["🚀 Push to GitHub /<br/>use in production"]
+```
+
 # Data-Management 🧮
 
 ### FittingData (MATLAB)
