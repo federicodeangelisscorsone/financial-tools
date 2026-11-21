@@ -3,11 +3,22 @@
 
 ## How I work on these functions
 
-```mermaid
-flowchart LR
-    A[Step 1: I write the function] --> B[Step 2: short review with AI]
-    B --> C[Step 3: I review the AI suggestions]
-    C --> D[Push / use in production]
+```
+┌───────────────────────────────────────┐
+│  Step 1: I write the function         │
+└───────────────────┬───────────────────┘
+                    ▼
+┌───────────────────────────────────────┐
+│  Step 2: short review with AI         │
+└───────────────────┬───────────────────┘
+                    ▼
+┌───────────────────────────────────────┐
+│  Step 3: I review the AI suggestions  │
+└───────────────────┬───────────────────┘
+                    ▼
+┌───────────────────────────────────────┐
+│  Push / use in production             │
+└───────────────────────────────────────┘
 ```
 
 Regarding step 2, I avoid having the AI generate the functions from scratch. AI tends to produce over-engineered code, so I prefer to write it myself and then use AI to run a logic check.
